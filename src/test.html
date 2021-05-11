@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style lang="css">
+        .blocks{
+            counter-reset: wangxiaoer; 
+        }
+        .block{
+            display: block;
+            font-size: 32px; 
+            font-family: Arial black; 
+            color: #cd0000; 
+        }
+        .block::before{
+            content: counters(wangxiaoer,'-')'.'; 
+            counter-increment: wangxiaoer ;
+
+            color: black; 
+
+        }
+        .inline-block{
+            display: inline-block;
+        }
+        .block2{
+            display: block;
+        }
+        .block3{
+            display: block;
+        }
+        .content{
+            content: attr(alt);
+        }
+        .content::after{
+            content:attr(data-title)
+        }
+        .quotes{
+            quotes: 'quotes"''""';
+        }
+        .content-before{
+
+        }
+        .content-before::before{
+            content: open-quote;
+            height: 100%;
+            width: 100%;
+        }
+        .content-before::after{
+            content: close-quote;
+        }
+    </style>
+</head>
+<body>
+    <div class="blocks">
+        <div class="conten-before">content before</div>
+        <div class="block content">bolck</div>
+        <div class="block content">bolck</div>
+
+        <div class="blocks">
+            <div class="block">子block</div>
+            <div class="block">子block</div>
+            <div class="block">子block</div>
+            <div class="blocks">
+                <div class="block">孙block</div>
+                <div class="block">孙block</div>
+                <div class="block">孙block</div>
+            </div>
+        </div>
+        <div class="blocks">
+            <div class="block">子block</div>
+            <div class="block">子block</div>
+            <div class="block">子block</div>
+            <div class="blocks">
+                <div class="block">孙block</div>
+                <div class="block">孙block</div>
+                <div class="block">孙block</div>
+            </div>
+        </div>
+        <div class="block quotes">bolck</div>
+        <div class="block">bolck</div>
+        <div class="block">bolck</div>
+        <div class="inline-block">inline-block</div>
+        <div class="inline-block">inline-block</div>
+        <div class="inline-block">inline-block</div>
+        <div class="inline-block">inline-block</div>
+    </div>
+    <div class="block quotes">bolck</div>
+    <div class="block">bolck</div>
+    <div class="block">bolck</div>
+    
+
+
+</body>
+</html>
