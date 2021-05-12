@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .box-parent {
+            display: flex;
+            justify-content: flex-start;
+            border: 10px solid hsla(0, 0%, 100%, .5);
+            /* background:black; */
+            background-clip: padding-box;
+            flex-wrap: wrap;
+        }
+        
+        .box-son {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <!-- <link rel="stylesheet" href="index.css"> -->
+    <title>css揭秘</title>
+<script defer src="index.js"></script></head>
+
+<body>
+    123
+    <div class="block">block</div>
+    <div class="inline">inline</div>
+    <div class="inline-block">inline-block</div>
+
+    <button id="fangdou">防抖</button>
+    <button id="jieliu">节流</button>
+    <button id="fang+jie">防抖+节流</button>
+
+    <div class="box-parent">
+        <div class="box-son box1">1</div>
+        <div class="box-son box2">2</div>
+        <div class="box-son box3">2</div>
+        <div class="box-son box4">2</div>
+        <div class="absolute1">absolute1aaaaaaaaa</div>
+        <div class="absolute2">
+            <div class="box-son box1">1</div>
+            <div class="box-son box2 absuolute3">2</div>
+            <div class="box-son box3 ">2</div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>
+<script type="text/javascript">
+    let son = document.createElement('div')
+    son.innerHTML = '123fdasafsa4444444444444'
+    son.style = 'color:red;'
+    son.className = 'boxt'
+        // son.setAttribute('style','color:red;')
+    document.getElementsByClassName('box-parent')[0].append(son)
+    for (let i = 5; i < 30; i++) {
+        let son = document.createElement('div')
+        son.innerHTML = i
+        son.className = 'box-son box' + i
+        document.getElementsByClassName('box-parent')[0].appendChild(son)
+
+    }
+
+    function debounce() {
+        let timer = null
+        return function() {
+            if (timer) {
+                clearTimeout(timer);
+            }
+            timer = setTimeout(function() {
+                alert('防抖')
+            }, 1000);
+        }
+
+    }
+
+    function throttle() {
+        let flag = true
+        return () => {
+            if (!flag) return
+            flag = false
+            setTimeout(() => {
+                alert('节流');
+                flag = true
+            }, 1000)
+        }
+    }
+    // let timer = null;
+    document.getElementById('fangdou').onclick = debounce()
+    document.getElementById('jieliu').onclick = throttle()
+    document.getElementById('fang+jie').onclick = function() {
+
+    }
+</script>
